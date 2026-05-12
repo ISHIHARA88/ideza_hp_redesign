@@ -316,12 +316,12 @@ p {
 }
 
 .btn-primary {
-  background: var(--liquid-champagne);
-  color: #3b2a24;
-  /* Refined dark bronze text */
+  /* Sampled from Yellow/Orange aurora blobs for atmospheric blend */
+  background: linear-gradient(135deg, #f1c40f 0%, #ee8f4c 100%);
+  color: #fff; /* User requested comparison to white text */
   font-weight: 700;
-  box-shadow: 0 10px 30px rgba(248, 181, 0, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 25px rgba(238, 143, 76, 0.25), inset 0 2px 5px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary {
@@ -1662,5 +1662,368 @@ footer p {
 
   .monitor-badge-text {
     font-size: 14px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   FEATURED SOLUTION SHOWCASE SECTION
+   ═══════════════════════════════════════════════ */
+.special-feature-section {
+  padding: 140px 0;
+  position: relative;
+}
+
+.feature-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 160px;
+  margin-top: 100px;
+}
+
+.showcase-item {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.showcase-item.reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.showcase-item.reverse .showcase-visual {
+  order: 2;
+}
+
+.showcase-item.reverse .showcase-content {
+  order: 1;
+}
+
+/* Visual Side & Clickable Action Wrapping */
+.showcase-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: center;
+}
+
+.clickable-visual {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.browser-frame-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.browser-frame {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.browser-frame.dark-mode-frame {
+  background: #1a1a1a;
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover lifts the image frame when linked */
+.clickable-visual:hover .browser-frame {
+  transform: translateY(-18px) scale(1.02);
+  box-shadow: 0 60px 130px rgba(0, 0, 0, 0.15);
+}
+
+.browser-top {
+  height: 36px;
+  background: #f0f2f5;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.dark-mode-frame .browser-top {
+  background: #2d2d2d;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.frame-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.frame-dot.red { background: #ff5f56; }
+.frame-dot.yellow { background: #ffbd2e; }
+.frame-dot.green { background: #27c93f; }
+
+.frame-url {
+  margin-left: 20px;
+  background: #ffffff;
+  flex-grow: 1;
+  max-width: 300px;
+  height: 22px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.dark-mode-frame .frame-url {
+  background: #3d3d3d;
+  color: #aaa;
+}
+
+.frame-body {
+  width: 100%;
+  line-height: 0;
+}
+
+.frame-body img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 🌟 Deep Cloud Flow Animation reserved ONLY for Final CTA 🌟 */
+@keyframes cloudMorphing {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate3d(0, 0, 0) rotate(0.01deg);
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: translate3d(0, -15px, 0) rotate(0.5deg);
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate3d(0, 0, 0) rotate(0.01deg);
+  }
+}
+
+.dynamic-btn-group {
+  width: 100%;
+  text-align: center;
+}
+
+/* SPECIAL INTERNAL DEMO PILL BUTTONS (Stripped of morph, optimized elegance) */
+.btn-special-float {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  padding: 18px 56px;
+  /* Sampled from Background Blob-3 & Blob-1: Soft warm harmony */
+  background: linear-gradient(135deg, #da3e3e 0%, #f29c7d 100%);
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  border-radius: 50px; /* Standard clean pill shape */
+  box-shadow: 0 12px 30px rgba(218, 62, 62, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.btn-special-float:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(218, 62, 62, 0.35);
+}
+
+/* Harmonized Violet/Blue gentle palette sampled from Background Blob-4 & Blob-2 */
+.btn-gentle-float {
+  background: linear-gradient(135deg, #8e44ad 0%, #29ade3 100%);
+  box-shadow: 0 12px 30px rgba(142, 68, 173, 0.2);
+}
+
+.btn-gentle-float:hover {
+  box-shadow: 0 20px 50px rgba(142, 68, 173, 0.35);
+}
+
+/* 👑 NEW CLOUD MORPH MASTER CTA BUTTON (For the ultimate contact) 👑 */
+.btn-cloud-morph {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  padding: 24px 72px;
+  background: linear-gradient(135deg, var(--enciera-orange), #ff7b54); /* Powerful brand color */
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.15em;
+  border-radius: 50px; 
+  box-shadow: 0 20px 50px rgba(229, 92, 60, 0.3);
+  animation: cloudMorphing 7s ease-in-out infinite; /* The magical organic vibe lives here now */
+  will-change: transform, border-radius;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.4s;
+}
+
+.btn-cloud-morph:hover {
+  transform: scale(1.06) translate3d(0, -8px, 0) !important;
+  box-shadow: 0 30px 70px rgba(229, 92, 60, 0.45);
+}
+
+/* 🌟 Shine Reflection Overlay Effect on Hover 🌟 */
+.ripple-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg) translate3d(0,0,0);
+  transition: none;
+  pointer-events: none;
+}
+
+.ripple-shine:hover::before {
+  left: 160%;
+  transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Content Styles */
+.showcase-content {
+  padding: 0 20px;
+}
+
+.showcase-headline {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 28px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* (NEW) Utility class to prevent orphans */
+.text-no-wrap {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.showcase-text {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+  text-align: justify;
+  word-break: auto-phrase;
+}
+
+.showcase-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.showcase-highlights li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.showcase-highlights li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--enciera-orange);
+  font-weight: 900;
+  font-size: 18px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .showcase-item, .showcase-item.reverse {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .showcase-item.reverse .showcase-visual {
+    order: 1;
+  }
+  
+  .showcase-item.reverse .showcase-content {
+    order: 2;
+  }
+  
+  .feature-showcase {
+    gap: 120px;
+  }
+  
+  .showcase-content {
+    padding: 0 15px;
+    text-align: center;
+  }
+  
+  .showcase-headline {
+    margin-top: 20px;
+    font-size: clamp(22px, 6vw, 28px);
+  }
+  
+  .showcase-highlights {
+    display: inline-block;
+    text-align: left;
+    max-width: 90%;
+  }
+  
+  .showcase-visual {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .special-feature-section {
+    padding: 80px 0;
+  }
+  
+  .feature-showcase {
+    margin-top: 40px;
+    gap: 80px;
+  }
+  
+  .showcase-headline {
+    font-size: clamp(20px, 5.5vw, 24px);
+    line-height: 1.4;
+  }
+  
+  .showcase-text {
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: left;
+    padding: 0 5px;
+  }
+  
+  .btn-special-float {
+    padding: 16px 40px;
+    font-size: 16px;
+  }
+  
+  .btn-cloud-morph {
+    padding: 18px 48px;
+    font-size: 18px;
+  }
+  
+  .showcase-visual {
+    gap: 32px;
   }
 }

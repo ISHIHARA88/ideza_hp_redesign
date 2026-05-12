@@ -30,7 +30,8 @@
       <ul class="nav-links">
         <li><a href="#hero">トップ</a></li>
         <li><a href="#profile">プロフィール</a></li>
-        <li><a href="#works">制作実績</a></li>
+        <li><a href="#works">広告バナー</a></li>
+        <li><a href="#special-feature">LP・システム</a></li>
         <li><a href="#price">料金プラン</a></li>
       </ul>
       <!-- Changed to Vercel Contact App -->
@@ -159,6 +160,83 @@
       </div>
     </section>
 
+    <section id="special-feature" class="section special-feature-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title reveal">LP制作 ＆ システム制作の実績</h2>
+          <p class="section-subtitle reveal">想いを伝える優しいデザインと、お客様とのやり取りをスムーズにする便利な仕組みをお作りします。</p>
+        </div>
+
+        <div class="feature-showcase">
+          
+          <!-- Showcase 01: Premium LP -->
+          <div class="showcase-item reveal">
+            <div class="showcase-visual">
+              <a href="https://suisei-beauty-lp.netlify.app" target="_blank" class="browser-frame-wrapper clickable-visual" title="デモサイトを別タブで開く">
+                <div class="browser-frame">
+                  <div class="browser-top">
+                    <span class="frame-dot red"></span><span class="frame-dot yellow"></span><span class="frame-dot green"></span>
+                    <div class="frame-url">suisei-beauty-lp.netlify.app</div>
+                  </div>
+                  <div class="frame-body">
+                    <img src="assets/showcase_lp_suisei.png" alt="Luxury Skincare LP">
+                  </div>
+                </div>
+              </a>
+              <div class="showcase-actions dynamic-btn-group">
+                <a href="https://suisei-beauty-lp.netlify.app" target="_blank" class="btn-special-float ripple-shine">実稼働デモを見る →</a>
+              </div>
+            </div>
+            
+            <div class="showcase-content">
+              <h3 class="showcase-headline">想いをWebへ再現。<br>魅力を伝える<span class="text-no-wrap">ページ作り</span></h3>
+              <p class="showcase-text">
+                あなたのこだわりや大切にしている世界観を、形にして表現します。Figmaで描いたイメージを忠実に再現し、見やすさ・使いやすさにも配慮した、お客様の心に届くページを目指しました。
+              </p>
+              <ul class="showcase-highlights">
+                <li>世界観が伝わる丁寧で細やかなデザイン</li>
+                <li>フワッとなめらかに動く心地よい演出効果</li>
+                <li>スマホでも読みやすく快適なページ構成</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Showcase 02: Dashboard App -->
+          <div class="showcase-item reverse reveal">
+            <div class="showcase-visual">
+              <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" class="browser-frame-wrapper clickable-visual" title="管理アプリを別タブで開く">
+                <div class="browser-frame dark-mode-frame">
+                  <div class="browser-top">
+                    <span class="frame-dot red"></span><span class="frame-dot yellow"></span><span class="frame-dot green"></span>
+                    <div class="frame-url">contact-management.vercel.app</div>
+                  </div>
+                  <div class="frame-body">
+                    <img src="assets/showcase_app_dashboard.png" alt="Inquiry Management System">
+                  </div>
+                </div>
+              </a>
+              <div class="showcase-actions dynamic-btn-group">
+                <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" class="btn-special-float btn-gentle-float ripple-shine">管理アプリを見る →</a>
+              </div>
+            </div>
+            
+            <div class="showcase-content">
+              <h3 class="showcase-headline">「繋がる」を大切に。<br>シンプルで使いやすい<span class="text-no-wrap">管理画面</span></h3>
+              <p class="showcase-text">
+                ページを見てくれたお客様とのご縁を大切にするための、専用の管理画面です。ReactやSupabaseといったモダンな仕組みを使うことで、お問い合わせの確認がサクサク進む、ストレスフリーな使い心地を実現しています。
+              </p>
+              <ul class="showcase-highlights">
+                <li>新着メッセージがすぐに手元で確認できる仕組み</li>
+                <li>次の一歩への提案を優しく促すサポート機能</li>
+                <li>初めて触る方でも迷わず使える、すっきりした画面</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <section id="price" class="section glass-section">
       <div class="container">
         <div class="section-header">
@@ -208,7 +286,7 @@
         <h2>ご相談お待ちしております</h2>
         <p class="cta-intro reveal">あなたのビジネスの大きなパートナーとして、まずは形にするお手伝いをさせてください。Web担当者がいない、自社の強みをうまく言語化できないといったお悩みでもお気軽にご連絡ください。</p>
         <!-- Changed to Vercel Contact App -->
-        <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-primary large reveal">無料相談はこちら</a>
+        <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-cloud-morph ripple-shine large reveal">無料相談はこちら</a>
       </div>
     </section>
   </main>
@@ -240,30 +318,40 @@
       });
     });
 
-    function reveal() {
-      var reveals = document.querySelectorAll(".reveal");
-      for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 0; // Trigger exactly when it enters the viewport
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        }
-      }
-      
-      // Staggered card reveal for portfolio
-      var cards = document.querySelectorAll(".work-card");
-      cards.forEach(function(card, index) {
-        var cardTop = card.getBoundingClientRect().top;
-        if (cardTop < window.innerHeight - 60) {
-          setTimeout(function() {
-            card.classList.add("card-visible");
-          }, index * 60); // Faster stagger for better rhythm
+    // --- Modern High-Performance Intersection Observer for Reveals ---
+    const revealObserverOptions = {
+      threshold: 0.15, // Trigger when 15% is visible
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          // Optionally unobserve if we don't need to trigger again
+          observer.unobserve(entry.target);
         }
       });
-    }
-    window.addEventListener("scroll", reveal);
-    reveal();
+    }, revealObserverOptions);
+
+    // Portfolio Staggered Observer
+    const cardObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Add a slight artificial staggered delay just based on the view bundle
+          setTimeout(() => {
+            entry.target.classList.add("card-visible");
+          }, 100 * (index % 4)); 
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Set up observers on boot
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+      document.querySelectorAll(".work-card").forEach(el => cardObserver.observe(el));
+    });
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
@@ -293,7 +381,7 @@
     document.addEventListener("DOMContentLoaded", () => {
       const bubbleContainer = document.createElement('div');
       bubbleContainer.className = 'bubbles-container';
-      const numBubbles = window.innerWidth < 768 ? 15 : 30; // Dense but optimized
+      const numBubbles = window.innerWidth < 768 ? 10 : 22; // Smooth balance
       
       const animations = ['floatSway1', 'floatSway2', 'floatSway3'];
 
