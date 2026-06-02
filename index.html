@@ -14,6 +14,8 @@
 </head>
 <body>
   
+
+
   <div class="blobs-wrapper">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -32,10 +34,11 @@
         <li><a href="#profile">プロフィール</a></li>
         <li><a href="#works">広告バナー</a></li>
         <li><a href="#special-feature">LP・システム</a></li>
+        <li><a href="#journey">制作の流れ</a></li>
         <li><a href="#price">料金プラン</a></li>
       </ul>
       <!-- Changed to Vercel Contact App -->
-      <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">お問い合わせ</a>
+      <a href="https://contact-app-ishihara88s-projects.vercel.app/login" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">お問い合わせ</a>
     </div>
   </nav>
 
@@ -78,8 +81,16 @@
           <h2 class="section-title reveal">制作実績</h2>
           <p class="section-subtitle reveal">最近の制作物（架空プロジェクト含む）。画像をクリックすると作品の詳細が拡大表示されます。</p>
         </div>
+      </div>
         
-        <div class="works-grid reveal">
+      <!-- 3D Slider Area -->
+      <div class="works-slider-wrapper reveal">
+          <!-- Slide Left Button -->
+          <button class="slide-arrow prev-btn" id="slider-prev-btn" aria-label="前の実績へ">‹</button>
+          
+          <!-- Slider Scroll Track -->
+          <div class="works-slider-container" id="works-slider">
+            <div class="works-slider-track">
 <!-- PORTFOLIO PERFECT SYNC START -->
           <div class="work-card" onclick="openLightbox('https://storage.googleapis.com/studio-design-asset-files/projects/VGOKXyjNqn/s-2160x3840_v-frms_webp_f0b0a0eb-9be2-4684-b068-043fc39e6b01_small.webp', 'オールインワンジェルのWEB広告', '透明感と肌が明るくなるような印象を、文字と光で表現しました。特徴である「美白×保湿」の文字が一目で目に入るようにしました。')">
             <div class="work-img-container"><img src="https://storage.googleapis.com/studio-design-asset-files/projects/VGOKXyjNqn/s-2160x3840_v-frms_webp_f0b0a0eb-9be2-4684-b068-043fc39e6b01_small.webp" alt="オールインワンジェルのWEB広告"></div>
@@ -155,7 +166,19 @@
             <div class="work-img-container"><img src="https://storage.googleapis.com/studio-design-asset-files/projects/VGOKXyjNqn/s-2160x3840_v-frms_webp_431d94c4-b224-4fa1-9408-3ee1506eada4_small.webp" alt="ドラム式洗濯機の広告"></div>
             <div class="work-info"><h3>ドラム式洗濯機の広告</h3></div>
           </div>
-<!-- PORTFOLIO END -->
+        </div>
+      </div>
+      <!-- Slide Right Button -->
+      <button class="slide-arrow next-btn" id="slider-next-btn" aria-label="次の実績へ">›</button>
+    </div>
+
+      <div class="container">
+        <!-- Slider UI Indicator (Scroll Progress) -->
+        <div class="slider-indicator-wrap reveal">
+          <div class="slider-progress-track">
+            <div class="slider-progress-bar" id="slider-progress"></div>
+          </div>
+          <div class="slider-hint-text" id="slider-hint">↔ 左右にドラッグまたはスクロールして実績を閲覧</div>
         </div>
       </div>
     </section>
@@ -172,15 +195,9 @@
           <!-- Showcase 01: Premium LP -->
           <div class="showcase-item reveal">
             <div class="showcase-visual">
-              <a href="https://suisei-beauty-lp.netlify.app" target="_blank" class="browser-frame-wrapper clickable-visual" title="デモサイトを別タブで開く">
-                <div class="browser-frame">
-                  <div class="browser-top">
-                    <span class="frame-dot red"></span><span class="frame-dot yellow"></span><span class="frame-dot green"></span>
-                    <div class="frame-url">suisei-beauty-lp.netlify.app</div>
-                  </div>
-                  <div class="frame-body">
-                    <img src="assets/showcase_lp_suisei.png" alt="Luxury Skincare LP">
-                  </div>
+              <a href="https://suisei-beauty-lp.netlify.app" target="_blank" class="seamless-mockup-wrapper clickable-visual" title="デモサイトを別タブで開く">
+                <div class="seamless-mockup">
+                  <img src="assets/showcase_suisei_premium.jpg" alt="Luxury Skincare LP" class="seamless-img">
                 </div>
               </a>
               <div class="showcase-actions dynamic-btn-group">
@@ -201,38 +218,158 @@
             </div>
           </div>
 
-          <!-- Showcase 02: Dashboard App -->
+          <!-- Showcase 02: Dashboard & Inquiry App -->
           <div class="showcase-item reverse reveal">
             <div class="showcase-visual">
-              <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" class="browser-frame-wrapper clickable-visual" title="管理アプリを別タブで開く">
-                <div class="browser-frame dark-mode-frame">
-                  <div class="browser-top">
-                    <span class="frame-dot red"></span><span class="frame-dot yellow"></span><span class="frame-dot green"></span>
-                    <div class="frame-url">contact-management.vercel.app</div>
-                  </div>
-                  <div class="frame-body">
-                    <img src="assets/showcase_app_dashboard.png" alt="Inquiry Management System">
-                  </div>
+              <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" class="seamless-mockup-wrapper clickable-visual" title="お問い合わせフォーム（デモ）を開く">
+                <div class="seamless-mockup">
+                  <img src="assets/showcase_app_split.jpg" alt="Inquiry System & Admin Dashboard" class="seamless-img">
                 </div>
               </a>
               <div class="showcase-actions dynamic-btn-group">
-                <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" class="btn-special-float btn-gentle-float ripple-shine">管理アプリを見る →</a>
+                <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" class="btn-special-float btn-gentle-float ripple-shine">お問い合わせ画面へ →</a>
               </div>
             </div>
             
             <div class="showcase-content">
-              <h3 class="showcase-headline">「繋がる」を大切に。<br>シンプルで使いやすい<span class="text-no-wrap">管理画面</span></h3>
+              <h3 class="showcase-headline">「繋がる」を形に。<br>実用的なお問い合わせ管理システム</h3>
               <p class="showcase-text">
-                ページを見てくれたお客様とのご縁を大切にするための、専用の管理画面です。ReactやSupabaseといったモダンな仕組みを使うことで、お問い合わせの確認がサクサク進む、ストレスフリーな使い心地を実現しています。
+                お客様との最初のご縁を逃さないための、専用お問い合わせフォームと管理画面のセットです。ReactとSupabaseを活用し、スムーズな操作感を実現。お問い合わせが入ると<strong>LINEへリアルタイムで通知が届く</strong>ため、迅速な対応が可能です。
               </p>
               <ul class="showcase-highlights">
-                <li>新着メッセージがすぐに手元で確認できる仕組み</li>
-                <li>次の一歩への提案を優しく促すサポート機能</li>
-                <li>初めて触る方でも迷わず使える、すっきりした画面</li>
+                <li>直感的に操作できる管理画面</li>
+                <li>LINEへのリアルタイム通知機能</li>
+                <li>PC・スマホ両対応のレスポンシブ設計</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Showcase 03: I.DEZA Portfolio (Self) -->
+          <div class="showcase-item reveal">
+            <div class="showcase-visual">
+              <div class="seamless-mockup">
+                <img src="assets/showcase_ideza_premium.jpg" alt="I.DEZA Portfolio Site" class="seamless-img">
+              </div>
+            </div>
+            
+            <div class="showcase-content">
+              <h3 class="showcase-headline">自身の「顔」となる。<br>クリエイティブなポートフォリオ</h3>
+              <p class="showcase-text">
+                クリエイターとしてのアイデンティティを表現する、自社ポートフォリオサイトです。最新のWeb技術と、五感に訴えるインタラクティブな演出を融合。単なる実績集ではなく、ブランドそのものを体験できる場として構築しました。
+              </p>
+              <ul class="showcase-highlights">
+                <li>奥行きと透明感を感じさせるモダンデザイン</li>
+                <li>没入感を高めるシームレスなアニメーション</li>
+                <li>高速なページ遷移と快適なUXの両立</li>
               </ul>
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey Section: Step-by-Step Flow -->
+    <section id="journey" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title reveal">制作の流れ</h2>
+          <p class="section-subtitle reveal">理想を形にする、8つのステップ</p>
+        </div>
+
+        <div class="journey-container">
+          <div class="journey-line"></div>
+
+          <div class="journey-steps">
+            <!-- Step 01 -->
+            <div class="journey-item reveal">
+              <div class="step-marker">
+                <div class="step-number">01</div>
+              </div>
+              <div class="step-card">
+                <h4 class="step-title">ご相談・ビジョン共有</h4>
+                <p class="step-desc">お客様の想いや解決したい課題をお伺いします。具体的なイメージがなくても大丈夫です。対話を通じて「理想の形」を一緒に探ります。</p>
+              </div>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="journey-item reveal">
+              <div class="step-marker">
+                <div class="step-number">02</div>
+              </div>
+              <div class="step-card">
+                <h4 class="step-title">正式なご依頼</h4>
+                <p class="step-desc">お見積もり内容に納得いただけましたら、制作を正式にスタートします。ここから、あなたのビジネスの強力なパートナーとして伴走します。</p>
+              </div>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="journey-item reveal">
+              <div class="step-marker">
+                <div class="step-number">03</div>
+              </div>
+              <div class="step-card">
+                <h4 class="step-title">深層ヒアリング</h4>
+                <p class="step-desc">原稿や素材の共有に加え、ターゲット層や競合、大切にしている価値観などを深く掘り下げます。デザインの「核」を決める重要な工程です。</p>
+              </div>
+            </div>
+
+            <!-- Step 04 -->
+            <div class="journey-item reveal">
+              <div class="step-marker">
+                <div class="step-number">04</div>
+              </div>
+              <div class="step-card">
+                <h4 class="step-title">コンセプト・デザイン着手</h4>
+                <p class="step-desc">ヒアリング内容に基づき、コンセプトを策定。色使い、フォント、レイアウトなど、ブランドを最も輝かせるデザインを構築していきます。</p>
+              </div>
+            </div>
+
+            <!-- Step 05 -->
+            <div class="journey-item reveal">
+              <div class="step-marker">
+                <div class="step-number">05</div>
+              </div>
+              <div class="step-card">
+                <h4 class="step-title">メインビジュアル確認</h4>
+                <p class="step-desc">ページの顔となる「ファーストビュー」を最初にご確認いただきます。全体のトーン＆マナーが意向に沿っているか、この段階で確実にすり合わせます。</p>
+              </div>
+            </div>
+
+            <!-- Step 06 -->
+            <div class="journey-item reveal">
+              <div class="step-marker">
+                <div class="step-number">06</div>
+              </div>
+              <div class="step-card">
+                <h4 class="step-title">全体構築・実装</h4>
+                <p class="step-desc">決定したデザインを元に、ページ全体を作り込みます。スマホでの見やすさや、心地よいアニメーションなど、細部まで丁寧に実装を進めます。</p>
+              </div>
+            </div>
+
+            <!-- Step 07 -->
+            <div class="journey-item reveal">
+              <div class="step-marker">
+                <div class="step-number">07</div>
+              </div>
+              <div class="step-card">
+                <h4 class="step-title">最終検収・微調整</h4>
+                <p class="step-desc">完成したページ全体の動作確認と、必要に応じた修正対応を行います。1ミリの妥協もなく、最高のクオリティに仕上げていきます。</p>
+              </div>
+            </div>
+
+            <!-- Step 08 -->
+            <div class="journey-item reveal">
+              <div class="step-marker">
+                <div class="step-number">08</div>
+              </div>
+              <div class="step-card">
+                <h4 class="step-title">成功のバトン（納品）</h4>
+                <p class="step-desc">完成したデータの最終納品です。公開後の運用についてもサポートさせていただきます。ここが、あなたの新しい挑戦のスタート地点です。</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -286,7 +423,7 @@
         <h2>ご相談お待ちしております</h2>
         <p class="cta-intro reveal">あなたのビジネスの大きなパートナーとして、まずは形にするお手伝いをさせてください。Web担当者がいない、自社の強みをうまく言語化できないといったお悩みでもお気軽にご連絡ください。</p>
         <!-- Changed to Vercel Contact App -->
-        <a href="https://contact-app-ishihara88s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-cloud-morph ripple-shine large reveal">無料相談はこちら</a>
+        <a href="https://contact-app-ishihara88s-projects.vercel.app/login" target="_blank" rel="noopener noreferrer" class="btn-cloud-morph large reveal">無料相談はこちら</a>
       </div>
     </section>
   </main>
@@ -320,15 +457,14 @@
 
     // --- Modern High-Performance Intersection Observer for Reveals ---
     const revealObserverOptions = {
-      threshold: 0.15, // Trigger when 15% is visible
-      rootMargin: "0px 0px -50px 0px"
+      threshold: 0.01, // Trigger as soon as 1% is visible
+      rootMargin: "0px 0px 100px 0px" // Triggers 100px BEFORE entering screen for snappy instant-load feeling
     };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          // Optionally unobserve if we don't need to trigger again
           observer.unobserve(entry.target);
         }
       });
@@ -338,38 +474,50 @@
     const cardObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          // Add a slight artificial staggered delay just based on the view bundle
+          // Staggered wave entrance timing
           setTimeout(() => {
             entry.target.classList.add("card-visible");
-          }, 100 * (index % 4)); 
+          }, 40 * (index % 4)); // Even snappier stagger delay (40ms)
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.01, rootMargin: "0px 0px 100px 0px" }); // Triggers earlier as card rises onto screen
 
     // Set up observers on boot
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
-      document.querySelectorAll(".work-card").forEach(el => cardObserver.observe(el));
+      // Only observe work-cards that are NOT inside the slider to prevent layout/opacity interference
+      document.querySelectorAll(".work-card:not(.works-slider-track .work-card)").forEach(el => cardObserver.observe(el));
     });
 
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const captionText = document.getElementById("caption");
-    const descText = document.getElementById("lightbox-desc");
+    let blockNextClick = false;
 
     function openLightbox(src, caption, description) {
+      if (blockNextClick) {
+        blockNextClick = false;
+        return;
+      }
+
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const captionText = document.getElementById("caption");
+      const descText = document.getElementById("lightbox-desc");
+
+      if (!lightbox) return;
+
       lightbox.style.display = "flex";
       setTimeout(() => {
         lightbox.classList.add("active");
       }, 10);
-      lightboxImg.src = src;
-      captionText.innerHTML = caption;
-      descText.innerHTML = description;
+      if (lightboxImg) lightboxImg.src = src;
+      if (captionText) captionText.innerHTML = caption;
+      if (descText) descText.innerHTML = description;
       document.body.style.overflow = "hidden";
     }
 
     function closeLightbox() {
+      const lightbox = document.getElementById("lightbox");
+      if (!lightbox) return;
       lightbox.classList.remove("active");
       setTimeout(() => {
         lightbox.style.display = "none";
@@ -457,7 +605,470 @@
       // Initial check after some delay for mobile render
       setTimeout(updateSwipeHints, 500);
 
+
+
+      // --- 3D COVER FLOW SLIDER CONTROL LOGIC ---
+      const slider = document.getElementById('works-slider');
+      const prevBtn = document.getElementById('slider-prev-btn');
+      const nextBtn = document.getElementById('slider-next-btn');
+      const progress = document.getElementById('slider-progress');
+      const hint = document.getElementById('slider-hint');
+      
+      if (slider) {
+        const track = slider.querySelector('.works-slider-track');
+        const originalCards = Array.from(track.querySelectorAll('.work-card'));
+        const N = originalCards.length;
+        const C = window.innerWidth < 768 ? 3 : 5; // Clone count front/back
+
+        // Clone last C cards and prepend
+        for (let i = N - C; i < N; i++) {
+          const clone = originalCards[i].cloneNode(true);
+          clone.classList.add('cloned-card');
+          track.insertBefore(clone, track.firstChild);
+        }
+        // Clone first C cards and append
+        for (let i = 0; i < C; i++) {
+          const clone = originalCards[i].cloneNode(true);
+          clone.classList.add('cloned-card');
+          track.appendChild(clone);
+        }
+
+        // Re-query slider cards including clones
+        const sliderCards = track.querySelectorAll('.work-card');
+
+        // --- SNAPPY 3D CARD TILT EFFECT ON DESKTOP (INCLUDING CLONES) ---
+        if (window.innerWidth >= 768) {
+          sliderCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+              // Only tilt active centered card in Cover Flow
+              if (!card.classList.contains('active-slide')) return;
+              
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              
+              const xc = rect.width / 2;
+              const yc = rect.height / 2;
+              
+              const angleX = (yc - y) / yc * 8;
+              const angleY = -(xc - x) / xc * 8;
+              
+              card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.05, 1.05, 1.05) translateZ(100px)`;
+              
+              const shadowX = (xc - x) / xc * 12;
+              const shadowY = (yc - y) / yc * 12;
+              card.style.boxShadow = `${shadowX}px ${shadowY}px 35px rgba(0, 0, 0, 0.32)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+              // Clear inline styles to let CSS classes take back control
+              card.style.transform = '';
+              card.style.boxShadow = '';
+            });
+          });
+        }
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let isAutoplayActive = true;
+        const autoplaySpeed = 1.15; // px per frame (slightly faster ticker for better frame persistence)
+        let lastTime = 0;
+        let autoplayFrameId = null;
+
+        // Math parameters
+        const cardWidth = window.innerWidth < 768 ? 260 : 320;
+        const gap = window.innerWidth < 768 ? 20 : 30;
+        const step = cardWidth + gap;
+        const paddingLeft = window.innerWidth < 768 ? 20 : 80;
+
+        // Set initial scroll position to show the first real card (skipping prepended clones)
+        const getOffset = () => {
+          const containerWidth = slider.clientWidth;
+          return paddingLeft + cardWidth / 2 - containerWidth / 2;
+        };
+
+        // Scroll to the first real card initially
+        slider.scrollLeft = (C * step) + getOffset();
+        let currentScrollX = slider.scrollLeft; // Float coordinate to prevent decimal truncation on normal screen displays
+
+        let ticking = false;
+        function updateCoverFlow() {
+          if (!slider) return;
+          const containerWidth = slider.clientWidth;
+          const offset = getOffset();
+          const currentScroll = slider.scrollLeft;
+
+          sliderCards.forEach((card, i) => {
+            const distance = (i * step) - currentScroll + offset;
+            const absDistance = Math.abs(distance);
+
+            // Determine target class
+            let targetClass = '';
+            if (absDistance < step * 0.4) {
+              targetClass = 'active-slide';
+            } else if (distance < 0) {
+              targetClass = (absDistance < step * 1.5) ? 'left-slide' : 'far-left-slide';
+            } else {
+              targetClass = (absDistance < step * 1.5) ? 'right-slide' : 'far-right-slide';
+            }
+
+            // High Performance DOM updates: Only change classlist when state actually shifts
+            if (!card.classList.contains(targetClass)) {
+              card.classList.remove('active-slide', 'left-slide', 'right-slide', 'far-left-slide', 'far-right-slide');
+              card.classList.add(targetClass);
+            }
+          });
+
+          // Update Progress based on real N cards (exclude clones for indicator accuracy)
+          const maxScrollReal = N * step;
+          const relativeScroll = (currentScroll - (C * step) - offset) % maxScrollReal;
+          const percentage = Math.max(0, Math.min(100, (relativeScroll / maxScrollReal) * 100));
+          progress.style.width = percentage + '%';
+        }
+
+        // Loop / Warp detection inside scroll event
+        slider.addEventListener('scroll', () => {
+          const offset = getOffset();
+          const loopStart = (C * step) + offset;
+          const loopEnd = ((C + N) * step) + offset;
+
+          // Seamless loop wrap-around
+          if (slider.scrollLeft >= loopEnd) {
+            slider.style.scrollBehavior = 'auto';
+            slider.scrollLeft = slider.scrollLeft - (N * step);
+          } else if (slider.scrollLeft <= loopStart - step) {
+            slider.style.scrollBehavior = 'auto';
+            slider.scrollLeft = slider.scrollLeft + (N * step);
+          }
+          currentScrollX = slider.scrollLeft; // Sync float tracker after looping or user interaction
+
+          // Throttle coverflow update for performance
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              updateCoverFlow();
+              ticking = false;
+            });
+            ticking = true;
+          }
+
+          if (hint && hint.style.opacity !== '0') {
+            hint.style.transition = 'opacity 0.5s';
+            hint.style.opacity = '0';
+          }
+        });
+
+        // Autoplay Loop Function (constant smooth tick)
+        function autoplayLoop(timestamp) {
+          if (!lastTime) lastTime = timestamp;
+          const deltaTime = timestamp - lastTime;
+          lastTime = timestamp;
+
+          if (isAutoplayActive && !isDown && slider) {
+            // Apply frame-rate independent smooth scrolling
+            const speedMultiplier = Math.min(2.5, deltaTime / 16.666); // Clamp max lag spike jump
+            currentScrollX += autoplaySpeed * speedMultiplier;
+            slider.scrollLeft = currentScrollX;
+          }
+
+          autoplayFrameId = requestAnimationFrame(autoplayLoop);
+        }
+
+        let autoplayRestartTimer = null;
+
+        function startAutoplay() {
+          isAutoplayActive = true;
+          if (slider) {
+            slider.style.scrollSnapType = 'none'; // Disable snapping during auto-scroll to prevent jitter/shaking
+            slider.style.scrollBehavior = 'auto'; // Disable browser smooth-scroll to prevent frame-by-frame collision
+          }
+          if (!autoplayFrameId) {
+            lastTime = 0;
+            autoplayFrameId = requestAnimationFrame(autoplayLoop);
+          }
+        }
+
+        function stopAutoplay() {
+          isAutoplayActive = false;
+          if (autoplayFrameId) {
+            cancelAnimationFrame(autoplayFrameId);
+            autoplayFrameId = null;
+          }
+        }
+
+        // Start constant loop on boot
+        setTimeout(startAutoplay, 500);
+
+        // Drag, click, and inertia state variables
+        let isDragging = false;
+        let startXCoord = 0;
+        let startYCoord = 0;
+
+        let velocity = 0;
+        let lastDragX = 0;
+        let lastDragTime = 0;
+        let isInertiaActive = false;
+        let inertiaFrameId = null;
+
+        function stopInertia() {
+          isInertiaActive = false;
+          if (inertiaFrameId) {
+            cancelAnimationFrame(inertiaFrameId);
+            inertiaFrameId = null;
+          }
+        }
+
+        function startInertiaScroll() {
+          stopInertia();
+          isInertiaActive = true;
+          currentScrollX = slider.scrollLeft;
+
+          const decay = 0.95; // Friction coefficient
+          function runInertia() {
+            if (!isInertiaActive) return;
+
+            velocity *= decay;
+            currentScrollX -= velocity * 16.666; // Scale velocity by frame time
+            slider.scrollLeft = currentScrollX;
+
+            if (Math.abs(velocity) > 0.15) {
+              inertiaFrameId = requestAnimationFrame(runInertia);
+            } else {
+              isInertiaActive = false;
+              snapToNearest();
+            }
+          }
+          inertiaFrameId = requestAnimationFrame(runInertia);
+        }
+
+        function snapToNearest() {
+          if (!slider) return;
+          slider.style.scrollSnapType = 'x mandatory';
+          slider.style.scrollBehavior = 'smooth';
+
+          const offset = getOffset();
+          const closestIndex = Math.round((slider.scrollLeft - offset) / step);
+          slider.scrollTo({ left: (closestIndex * step) + offset, behavior: 'smooth' });
+
+          if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
+          autoplayRestartTimer = setTimeout(startAutoplay, 1500);
+        }
+
+        // Mouse Drag (Desktop)
+        slider.addEventListener('mousedown', (e) => {
+          if (e.button !== 0) return;
+          isDown = true;
+          isDragging = false;
+          blockNextClick = false;
+          startXCoord = e.clientX;
+          startYCoord = e.clientY;
+          lastDragX = e.clientX;
+          lastDragTime = performance.now();
+          velocity = 0;
+          
+          stopAutoplay();
+          stopInertia();
+          if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
+
+          slider.classList.add('active');
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+          
+          slider.style.scrollSnapType = 'none';
+          slider.style.scrollBehavior = 'auto';
+        });
+
+        const endDrag = () => {
+          if (!isDown) return;
+          isDown = false;
+          slider.classList.remove('active');
+          
+          if (isDragging) {
+            blockNextClick = true;
+
+            // Apply inertia if mouse released quickly and velocity is high
+            const timeSinceLastMove = performance.now() - lastDragTime;
+            if (timeSinceLastMove > 100) {
+              velocity = 0; // Held still before release, no inertia
+            }
+            
+            if (Math.abs(velocity) > 0.15) {
+              startInertiaScroll();
+            } else {
+              snapToNearest();
+            }
+          }
+        };
+
+        slider.addEventListener('mouseleave', endDrag);
+        slider.addEventListener('mouseup', endDrag);
+
+        slider.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          const currentX = e.clientX;
+          const currentY = e.clientY;
+
+          // Only start dragging if moved > 20px (avoids canceling click events)
+          if (!isDragging) {
+            const dx = currentX - startXCoord;
+            const dy = currentY - startYCoord;
+            if (Math.abs(dx) > 20 || Math.abs(dy) > 20) {
+              isDragging = true;
+              startX = e.pageX - slider.offsetLeft;
+              scrollLeft = slider.scrollLeft;
+              lastDragX = currentX;
+              lastDragTime = performance.now();
+            }
+          }
+
+          if (isDragging) {
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            slider.scrollLeft = scrollLeft - walk;
+
+            const now = performance.now();
+            const dt = now - lastDragTime;
+            if (dt > 0) {
+              const deltaX = currentX - lastDragX;
+              velocity = (deltaX / dt) * 0.75 + velocity * 0.25; // Smooth velocity
+            }
+            lastDragX = currentX;
+            lastDragTime = now;
+          }
+        });
+
+        // Touch events for mobile (With precise dragging detection & inertia calculation)
+        let touchStartXCoord = 0;
+        let touchStartYCoord = 0;
+        let touchStartX = 0;
+        let touchScrollLeft = 0;
+
+        slider.addEventListener('touchstart', (e) => {
+          isDown = true;
+          isDragging = false;
+          blockNextClick = false;
+          touchStartXCoord = e.touches[0].clientX;
+          touchStartYCoord = e.touches[0].clientY;
+          lastDragX = e.touches[0].clientX;
+          lastDragTime = performance.now();
+          velocity = 0;
+
+          stopAutoplay();
+          stopInertia();
+          if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
+
+          touchStartX = e.touches[0].pageX - slider.offsetLeft;
+          touchScrollLeft = slider.scrollLeft;
+
+          slider.style.scrollSnapType = 'none';
+          slider.style.scrollBehavior = 'auto';
+        }, { passive: true });
+
+        slider.addEventListener('touchmove', (e) => {
+          if (!isDown) return;
+          const currentX = e.touches[0].clientX;
+          const currentY = e.touches[0].clientY;
+
+          // Only start dragging if moved > 20px (avoids canceling click events)
+          if (!isDragging) {
+            const dx = currentX - touchStartXCoord;
+            const dy = currentY - touchStartYCoord;
+            if (Math.abs(dx) > 20 || Math.abs(dy) > 20) {
+              isDragging = true;
+              touchStartX = e.touches[0].pageX - slider.offsetLeft;
+              touchScrollLeft = slider.scrollLeft;
+              lastDragX = currentX;
+              lastDragTime = performance.now();
+            }
+          }
+
+          if (isDragging) {
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            const walk = (x - touchStartX) * 1.5;
+            slider.scrollLeft = touchScrollLeft - walk;
+
+            const now = performance.now();
+            const dt = now - lastDragTime;
+            if (dt > 0) {
+              const deltaX = currentX - lastDragX;
+              velocity = (deltaX / dt) * 0.75 + velocity * 0.25; // Smooth velocity
+            }
+            lastDragX = currentX;
+            lastDragTime = now;
+          }
+        }, { passive: true });
+
+        slider.addEventListener('touchend', (e) => {
+          if (!isDown) return;
+          isDown = false;
+
+          if (isDragging) {
+            blockNextClick = true;
+
+            const timeSinceLastMove = performance.now() - lastDragTime;
+            if (timeSinceLastMove > 100) {
+              velocity = 0; // Held still before release, no inertia
+            }
+
+            if (Math.abs(velocity) > 0.15) {
+              startInertiaScroll();
+            } else {
+              snapToNearest();
+            }
+          }
+        }, { passive: true });
+
+
+
+        // Click Arrow buttons to transition slides
+        if (prevBtn && nextBtn) {
+          prevBtn.addEventListener('click', () => {
+            stopAutoplay();
+            stopInertia();
+            
+            slider.style.scrollSnapType = 'x mandatory';
+            slider.style.scrollBehavior = 'smooth';
+            
+            const offset = getOffset();
+            const closestIndex = Math.round((slider.scrollLeft - offset) / step);
+            let prevIndex = closestIndex - 1;
+            
+            slider.scrollTo({ left: (prevIndex * step) + offset, behavior: 'smooth' });
+            
+            if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
+            autoplayRestartTimer = setTimeout(startAutoplay, 2500);
+          });
+
+          nextBtn.addEventListener('click', () => {
+            stopAutoplay();
+            stopInertia();
+            
+            slider.style.scrollSnapType = 'x mandatory';
+            slider.style.scrollBehavior = 'smooth';
+            
+            const offset = getOffset();
+            const closestIndex = Math.round((slider.scrollLeft - offset) / step);
+            let nextIndex = closestIndex + 1;
+            
+            slider.scrollTo({ left: (nextIndex * step) + offset, behavior: 'smooth' });
+            
+            if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
+            autoplayRestartTimer = setTimeout(startAutoplay, 2500);
+          });
+        }
+
+        // Handle resize recalculations
+        window.addEventListener('resize', () => {
+          // Adjust position on resize to prevent breaking
+          const offset = getOffset();
+          const currentIndex = Math.round((slider.scrollLeft - offset) / step);
+          slider.scrollLeft = (currentIndex * step) + offset;
+          updateCoverFlow();
+        });
+      }
     });
   </script>
+  
+
 </body>
 </html>
