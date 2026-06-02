@@ -2464,6 +2464,9 @@ footer p {
   -webkit-user-drag: none;
   will-change: transform, opacity, filter;
   cursor: pointer;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Force grab cursor to close during active drag */
@@ -2534,6 +2537,9 @@ footer p {
 /* Image container fixed height for slider consistency */
 .works-slider-track .work-card .work-img-container {
   height: 380px;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .works-slider-track img {

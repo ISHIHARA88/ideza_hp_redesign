@@ -675,6 +675,7 @@
         const autoplaySpeed = 1.15; // px per frame (slightly faster ticker for better frame persistence)
         let lastTime = 0;
         let autoplayFrameId = null;
+        let scrollTimeout = null;
 
         // Math parameters
         const cardWidth = window.innerWidth < 768 ? 260 : 320;
@@ -755,6 +756,16 @@
           if (hint && hint.style.opacity !== '0') {
             hint.style.transition = 'opacity 0.5s';
             hint.style.opacity = '0';
+          }
+
+          // Debounced snap-to-nearest
+          if (scrollTimeout) clearTimeout(scrollTimeout);
+          if (!isDown && !isInertiaActive && !isAutoplayActive) {
+            scrollTimeout = setTimeout(() => {
+              const lightbox = document.getElementById("lightbox");
+              if (lightbox && lightbox.classList.contains("active")) return;
+              snapToNearest();
+            }, 150);
           }
         });
 
@@ -876,6 +887,9 @@
 
         function snapToNearest() {
           if (!slider) return;
+          const lightbox = document.getElementById("lightbox");
+          if (lightbox && lightbox.classList.contains("active")) return;
+
           slider.style.scrollSnapType = 'none';
           slider.style.scrollBehavior = 'auto';
 
@@ -900,6 +914,7 @@
           stopAutoplay();
           stopInertia();
           if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
+          if (scrollTimeout) clearTimeout(scrollTimeout);
 
           slider.classList.add('active');
           startX = e.pageX - slider.offsetLeft;
@@ -968,11 +983,9 @@
           }
         });
 
-        // Touch events for mobile (With precise dragging detection & inertia calculation)
+        // Touch events for mobile (Only for click blocking and autoplay/inertia interruption)
         let touchStartXCoord = 0;
         let touchStartYCoord = 0;
-        let touchStartX = 0;
-        let touchScrollLeft = 0;
 
         slider.addEventListener('touchstart', (e) => {
           isDown = true;
@@ -980,16 +993,11 @@
           blockNextClick = false;
           touchStartXCoord = e.touches[0].clientX;
           touchStartYCoord = e.touches[0].clientY;
-          lastDragX = e.touches[0].clientX;
-          lastDragTime = performance.now();
-          velocity = 0;
 
           stopAutoplay();
           stopInertia();
           if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
-
-          touchStartX = e.touches[0].pageX - slider.offsetLeft;
-          touchScrollLeft = slider.scrollLeft;
+          if (scrollTimeout) clearTimeout(scrollTimeout);
 
           slider.style.scrollSnapType = 'none';
           slider.style.scrollBehavior = 'auto';
@@ -1006,26 +1014,7 @@
             const dy = currentY - touchStartYCoord;
             if (Math.abs(dx) > 20 || Math.abs(dy) > 20) {
               isDragging = true;
-              touchStartX = e.touches[0].pageX - slider.offsetLeft;
-              touchScrollLeft = slider.scrollLeft;
-              lastDragX = currentX;
-              lastDragTime = performance.now();
             }
-          }
-
-          if (isDragging) {
-            const x = e.touches[0].pageX - slider.offsetLeft;
-            const walk = (x - touchStartX) * 1.5;
-            slider.scrollLeft = touchScrollLeft - walk;
-
-            const now = performance.now();
-            const dt = now - lastDragTime;
-            if (dt > 0) {
-              const deltaX = currentX - lastDragX;
-              velocity = (deltaX / dt) * 0.75 + velocity * 0.25; // Smooth velocity
-            }
-            lastDragX = currentX;
-            lastDragTime = now;
           }
         }, { passive: true });
 
@@ -1035,18 +1024,30 @@
 
           if (isDragging) {
             blockNextClick = true;
+          }
 
-            const timeSinceLastMove = performance.now() - lastDragTime;
-            if (timeSinceLastMove > 100) {
-              velocity = 0; // Held still before release, no inertia
-            }
-
-            if (Math.abs(velocity) > 0.15) {
-              startInertiaScroll();
-            } else {
+          // Trigger snap check 150ms after finger leaves screen (if native scrolling is already stopped)
+          if (scrollTimeout) clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            if (!isDown && !isInertiaActive && !isAutoplayActive) {
+              const lightbox = document.getElementById("lightbox");
+              if (lightbox && lightbox.classList.contains("active")) return;
               snapToNearest();
             }
-          }
+          }, 150);
+        }, { passive: true });
+
+        slider.addEventListener('touchcancel', (e) => {
+          isDown = false;
+          isDragging = false;
+          if (scrollTimeout) clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            if (!isDown && !isInertiaActive && !isAutoplayActive) {
+              const lightbox = document.getElementById("lightbox");
+              if (lightbox && lightbox.classList.contains("active")) return;
+              snapToNearest();
+            }
+          }, 150);
         }, { passive: true });
 
 
@@ -1056,6 +1057,7 @@
           prevBtn.addEventListener('click', () => {
             stopAutoplay();
             stopInertia();
+            if (scrollTimeout) clearTimeout(scrollTimeout);
             
             slider.style.scrollSnapType = 'none';
             slider.style.scrollBehavior = 'auto';
@@ -1071,6 +1073,7 @@
           nextBtn.addEventListener('click', () => {
             stopAutoplay();
             stopInertia();
+            if (scrollTimeout) clearTimeout(scrollTimeout);
             
             slider.style.scrollSnapType = 'none';
             slider.style.scrollBehavior = 'auto';
