@@ -841,17 +841,48 @@
           inertiaFrameId = requestAnimationFrame(runInertia);
         }
 
+        function snapToPosition(targetX) {
+          stopInertia();
+          isInertiaActive = true;
+          
+          const startX = slider.scrollLeft;
+          const distance = targetX - startX;
+          const duration = 400; // Smooth 400ms transition
+          const startTime = performance.now();
+          
+          function animateSnap(now) {
+            if (!isInertiaActive) return;
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Ease-out cubic easing
+            const ease = 1 - Math.pow(1 - progress, 3);
+            slider.scrollLeft = startX + distance * ease;
+            currentScrollX = slider.scrollLeft;
+            
+            if (progress < 1) {
+              inertiaFrameId = requestAnimationFrame(animateSnap);
+            } else {
+              isInertiaActive = false;
+              slider.scrollLeft = targetX;
+              currentScrollX = targetX;
+              
+              if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
+              autoplayRestartTimer = setTimeout(startAutoplay, 1500);
+            }
+          }
+          inertiaFrameId = requestAnimationFrame(animateSnap);
+        }
+
         function snapToNearest() {
           if (!slider) return;
-          slider.style.scrollSnapType = 'x mandatory';
-          slider.style.scrollBehavior = 'smooth';
+          slider.style.scrollSnapType = 'none';
+          slider.style.scrollBehavior = 'auto';
 
           const offset = getOffset();
           const closestIndex = Math.round((slider.scrollLeft - offset) / step);
-          slider.scrollTo({ left: (closestIndex * step) + offset, behavior: 'smooth' });
-
-          if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
-          autoplayRestartTimer = setTimeout(startAutoplay, 1500);
+          const targetX = (closestIndex * step) + offset;
+          snapToPosition(targetX);
         }
 
         // Mouse Drag (Desktop)
@@ -1026,34 +1057,30 @@
             stopAutoplay();
             stopInertia();
             
-            slider.style.scrollSnapType = 'x mandatory';
-            slider.style.scrollBehavior = 'smooth';
+            slider.style.scrollSnapType = 'none';
+            slider.style.scrollBehavior = 'auto';
             
             const offset = getOffset();
             const closestIndex = Math.round((slider.scrollLeft - offset) / step);
-            let prevIndex = closestIndex - 1;
+            const prevIndex = closestIndex - 1;
+            const targetX = (prevIndex * step) + offset;
             
-            slider.scrollTo({ left: (prevIndex * step) + offset, behavior: 'smooth' });
-            
-            if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
-            autoplayRestartTimer = setTimeout(startAutoplay, 2500);
+            snapToPosition(targetX);
           });
 
           nextBtn.addEventListener('click', () => {
             stopAutoplay();
             stopInertia();
             
-            slider.style.scrollSnapType = 'x mandatory';
-            slider.style.scrollBehavior = 'smooth';
+            slider.style.scrollSnapType = 'none';
+            slider.style.scrollBehavior = 'auto';
             
             const offset = getOffset();
             const closestIndex = Math.round((slider.scrollLeft - offset) / step);
-            let nextIndex = closestIndex + 1;
+            const nextIndex = closestIndex + 1;
+            const targetX = (nextIndex * step) + offset;
             
-            slider.scrollTo({ left: (nextIndex * step) + offset, behavior: 'smooth' });
-            
-            if (autoplayRestartTimer) clearTimeout(autoplayRestartTimer);
-            autoplayRestartTimer = setTimeout(startAutoplay, 2500);
+            snapToPosition(targetX);
           });
         }
 
